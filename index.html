@@ -3,14 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="my-website.css" rel="stylesheet"
+    <title>Dyllan Kintner | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern Color Palette */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --dark: #111827;
+            --light: #f9fafb;
+            --accent: #f97316;
+            --gray: #4b5563;
+            --light-gray: #e5e7eb;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            display: inline-block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+        }
+
+        .navbar a:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark), #1e3a8a);
+            color: white;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("mountain.png") center/cover no-repeat;
+            opacity: 0.05;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--light-gray);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(249, 115, 22, 0.6);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+        
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("city.jpg") center/cover no-repeat;
+            filter: brightness(0.3);
+            z-index: -1;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-section h2 {
+            color: white;
+        }
+        
+        .about-section h2::after {
+            background: var(--accent);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: #f3f4f6;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-tile {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-tile:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.3rem 0;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        /* Social Media Section */
+        .social-media {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark), #1e3a8a);
+            color: white;
+        }
+
+        .social-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .social-link span {
+            display: block;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: var(--dark);
+            color: var(--light-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .navbar a {
+                padding: 0.6rem 1rem;
+                margin: 0 0.2rem;
+            }
+            
+            .profile-picture {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar a {
+                display: block;
+                margin: 0.3rem auto;
+                width: 80%;
+            }
+            
+            .social-link {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Skills Section */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <img class="me-ing" src="https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=KuCo-dRBYV7nz2gbk4J9w1WtTAgpTdznHu55W9FjimE=" alt="picture of me">
-    <h1>This is my website</h1>
-    <p>Hello world</p>
-    </main>
+    <nav class="navbar">
+        <a href="#welcome-section"><i class="fa-solid fa-house"></i></a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#social-media">Contact</a>
+    </nav>
+
+    <section id="welcome-section" class="welcome-section">
+        <div class="welcome-content">
+            <img src="/api/placeholder/400/400" alt="Dyllan Kintner" class="profile-picture">
+            <h1>Dyllan Kintner</h1>
+            <p class="tagline">Web Developer | Problem Solver | Creative Thinker</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>Hello! I'm Dyllan, a passionate web developer with a strong interest in creating elegant, user-friendly applications. I enjoy turning complex problems into simple, beautiful, and intuitive solutions.</p>
+            <p>I focus on writing clean, efficient code and am constantly learning new technologies and techniques to improve my skills. When I'm not coding, you can find me exploring the outdoors, reading tech blogs, or working on personal projects.</p>
+            
+            <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">Python</span>
+                <span class="skill">React</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Responsive Design</span>
+                <span class="skill">Git</span>
+                <span class="skill">UI/UX</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="projects-container">
+            <div class="project-tile">
+                <img src="/api/placeholder/400/200" alt="Project 1" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Portfolio Website</h3>
+                    <p class="project-description">A responsive portfolio website built with HTML, CSS, and JavaScript.</p>
+                    <a href="https://github.com/yourproject" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-tile">
+                <img src="/api/placeholder/400/200" alt="Project 2" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Task Manager App</h3>
+                    <p class="project-description">A simple task manager application to organize daily activities.</p>
+                    <a href="https://github.com/yourproject" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-tile">
+                <img src="/api/placeholder/400/200" alt="Project 3" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Weather Dashboard</h3>
+                    <p class="project-description">A weather application that displays forecast data from an API.</p>
+                    <a href="https://github.com/yourproject" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="social-media" class="social-media">
+        <h2>Connect with Me</h2>
+        <div class="social-container">
+            <a href="https://github.com/DyllanKintner" target="_blank" class="social-link">
+                <div>
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/dyllan-kintner-8b1a31329/" target="_blank" class="social-link">
+                <div>
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </div>
+            </a>
+            <a href="https://www.codewars.com/users/yourprofile" target="_blank" class="social-link">
+                <div>
+                    <i class="fas fa-code"></i>
+                    <span>CodeWars</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Dyllan Kintner. All rights reserved.</p>
+    </footer>
 </body>
 </html>
