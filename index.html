@@ -8,14 +8,25 @@
     <style>
         /* Modern Color Palette */
         :root {
-            --primary: #2563eb;
+            --primary: #dd16b2;
             --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
+            --secondary: #6725da;
             --dark: #111827;
             --light: #f9fafb;
-            --accent: #f97316;
+            --accent: #8b16f9;
             --gray: #4b5563;
             --light-gray: #e5e7eb;
+            --space-dark: #0a0e17;
+            --space-medium: #1a1f2e;
+            --space-light: #2c3347;
+            --star-color: #ffffff;
+            --accent-blue: #4facfe;
+            --accent-purple: #7b3fe4;
+            --accent-pink: #f857a6;
+            --nebula-pink: rgba(249, 87, 166, 0.05);
+            --nebula-blue: rgba(79, 172, 254, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #b3c5ef;
         }
 
         body, html {
@@ -105,7 +116,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, var(--dark), #1e3a8a);
+            background: linear-gradient(135deg, var(--dark), #000000e7);
             color: white;
             text-align: center;
             padding: 0 2rem;
@@ -116,12 +127,12 @@
         .welcome-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("mountain.png") center/cover no-repeat;
-            opacity: 0.05;
+            width: 1500px;
+            height: 1600px;
+            background: url("giphy.gif") center/cover no-repeat;
+            opacity: 0.56;
+            top: -450px;
+            
         }
 
         .welcome-content {
@@ -141,6 +152,7 @@
             border: 4px solid var(--accent);
             margin-bottom: 2rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            top: 38px
         }
 
         .tagline {
@@ -158,13 +170,13 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+            box-shadow: 0 4px 15px rgba(249, 22, 192, 0.514);
             margin-top: 1rem;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(249, 115, 22, 0.6);
+            box-shadow: 0 7px 20px rgba(255, 1, 170, 0.6);
         }
 
         /* About Section */
@@ -235,7 +247,7 @@
         }
 
         .project-image {
-            width: 100%;
+            width: 50%;
             height: 180px;
             object-fit: cover;
         }
@@ -392,6 +404,122 @@
             background: var(--accent);
             transform: translateY(-3px);
         }
+
+           /* Hero Section */
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-blue);
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(79, 172, 254, 0.6);
+            position: relative;
+        }
+
+        .orbit-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin-bottom: 1rem;
+            animation: slow-spin 20s linear infinite;
+        }
+
+        /* Multiple orbit rings */
+        .profile-ring {
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--accent-pink);
+            border-left: 2px solid var(--accent-purple);
+            animation: spin 12s linear infinite;
+        }
+
+        .profile-ring-2 {
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid transparent;
+            border-bottom: 1px solid var(--accent-blue);
+            border-right: 1px solid var(--accent-purple);
+            animation: spin-reverse 15s linear infinite;
+        }
+
+        /* Mini planets orbiting */
+        .mini-planet {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(79, 140, 254, 0.8);
+        }
+
+        .mini-planet-1 {
+            width: 10px;
+            height: 10px;
+            top: 10%;
+            left: 50%;
+            animation: orbit-planet 8s linear infinite;
+        }
+
+        .mini-planet-2 {
+            width: 8px;
+            height: 8px;
+            top: 50%;
+            left: 10%;
+            background: var(--accent-pink);
+            box-shadow: 0 0 10px rgba(248, 87, 166, 0.8);
+            animation: orbit-planet 12s linear infinite reverse;
+        }
+
+        @keyframes orbit-planet {
+            0% { transform: rotate(0deg) translateX(125px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(125px) rotate(-360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes spin-reverse {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+
+        @keyframes slow-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -404,10 +532,16 @@
 
     <section id="welcome-section" class="welcome-section">
         <div class="welcome-content">
-            <img src="/api/placeholder/400/400" alt="Dyllan Kintner" class="profile-picture">
+            <div class="orbit-container">
+                <div class="profile-ring"></div>
+                <div class="profile-ring-2"></div>
+                <div class="mini-planet mini-planet-1"></div>
+                <div class="mini-planet mini-planet-2"></div>
+                <img src="1659318942954.jpg" alt="Dyllan Kintner" class="profile-picture">
+            </div>
             <h1>Dyllan Kintner</h1>
-            <p class="tagline">Web Developer | Problem Solver | Creative Thinker</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <p class="tagline">Web Developer | Problem Solver | Cosmic Coder</p>
+            <a href="#projects" class="cta-button">Explore My Universe</a>
         </div>
     </section>
 
@@ -415,23 +549,18 @@
         <h2>About Me</h2>
         <div class="about-content">
             <p>Hello! I'm Dyllan, a passionate web developer with a strong interest in creating elegant, user-friendly applications. I enjoy turning complex problems into simple, beautiful, and intuitive solutions.</p>
-            <p>I focus on writing clean, efficient code and am constantly learning new technologies and techniques to improve my skills. When I'm not coding, you can find me exploring the outdoors, reading tech blogs, or working on personal projects.</p>
+            <p>I focus on me, efficient code and am constantly learning new technologies and techniques to improve my skills. When I'm not coding, you can find me exploring the outdoors, reading tech blogs, or working on personal projects.</p>
             
             <div class="skills">
+                <span class="skill">Python</span>
                 <span class="skill">HTML</span>
                 <span class="skill">CSS</span>
-                <span class="skill">Python</span>
-                <span class="skill">React</span>
-                <span class="skill">Node.js</span>
-                <span class="skill">Responsive Design</span>
-                <span class="skill">Git</span>
-                <span class="skill">UI/UX</span>
-            </div>
+                
         </div>
     </section>
 
     <section id="projects" class="projects">
-        <h2>My Projects</h2>
+        <h2>my  projects</h2>
         <div class="projects-container">
             <div class="project-tile">
                 <img src="/api/placeholder/400/200" alt="Project 1" class="project-image">
@@ -460,6 +589,28 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section id="projects" class="projects">
+        <h2>certifications</h2>
+        <div class="projects-container">
+            <div class="project-tile">
+                <img src="Python.svg.png" alt="Project 1" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Python</h3>
+                    <p class="project-description">A responsive portfolio website built with HTML, CSS, and JavaScript.</p>
+                    <a href="https://github.com/yourproject" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-tile">
+                <img src="/api/placeholder/400/200" alt="Project 2" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Task Manager App</h3>
+                    <p class="project-description">A simple task manager application to organize daily activities.</p>
+                    <a href="https://github.com/yourproject" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+            
     </section>
 
     <section id="social-media" class="social-media">
