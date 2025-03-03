@@ -27,6 +27,7 @@
             --nebula-blue: rgba(79, 172, 254, 0.05);
             --text-primary: #ffffff;
             --text-secondary: #b3c5ef;
+            
         }
 
         body, html {
@@ -56,7 +57,7 @@
 
         h2 {
             font-size: 2.2rem;
-            color: var(--primary);
+            color: var(--accent-blue);
             position: relative;
             display: inline-block;
             margin-bottom: 2rem;
@@ -129,7 +130,7 @@
             position: absolute;
             width: 1500px;
             height: 1600px;
-            background: url("giphy.gif") center/cover no-repeat;
+            background: url("images/giphy.gif") center/cover no-repeat;
             opacity: 0.56;
             top: -450px;
             
@@ -247,7 +248,12 @@
         }
 
         .project-image {
-            width: 170px;
+            width: 220px;
+            height: 180px;
+            object-fit: cover;
+        }
+        .project-pyton {
+            width: 180px;
             height: 180px;
             object-fit: cover;
         }
@@ -537,7 +543,7 @@
                 <div class="profile-ring-2"></div>
                 <div class="mini-planet mini-planet-1"></div>
                 <div class="mini-planet mini-planet-2"></div>
-                <img src="1659318942954.jpg" alt="Dyllan Kintner" class="profile-picture">
+                <img src="images/1659318942954.jpg" alt="Dyllan Kintner" class="profile-picture">
             </div>
             <h1>Dyllan Kintner</h1>
             <p class="tagline">Web Developer | Problem Solver | Cosmic Coder</p>
@@ -594,20 +600,21 @@
         <h2>certifications</h2>
         <div class="projects-container">
             <div class="project-tile">
-                <img src="Python.svg.png" alt="Project 1" class="project-image">
+                <img src="images/Python.svg.png" alt="Project 1" class="project-pyton">
                 <div class="project-content">
                     <h3 class="project-title">Python</h3>
-                    <p class="project-description">A responsive portfolio website built with HTML, CSS, and JavaScript.</p>
-                    <a href="https://github.com/yourproject" target="_blank" class="project-link">View Project</a>
+                    <p class="project-description">Python is a versatile programming language known for its readability and ease of use.</p>
+                    <a href="images/Python-certiport.png" target="_blank" class="project-link">View Project</a>
+
                 </div>
             </div>
             
             <div class="project-tile">
-                <img src="/api/placeholder/400/200" alt="Project 2" class="project-image">
+                <img src="images/HTML-CSS-logo.png" alt="Project 2" class="project-image">
                 <div class="project-content">
-                    <h3 class="project-title">Task Manager App</h3>
-                    <p class="project-description">A simple task manager application to organize daily activities.</p>
-                    <a href="https://github.com/yourproject" target="_blank" class="project-link">View Project</a>
+                    <h3 class="project-title">HTML/CSS</h3>
+                    <p class="project-description">HTML & CSS are the building blocks of the web, used to create and style websites with structure and design.</p>
+                    <a href="images/html-css-certiport.png" target="_blank" class="project-link">View Project</a>
                 </div>
             </div>
             
