@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyllan Kintner | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Existing styles... (all previous CSS remains the same) */
+
+        /* Additional Game Styles */
+        .game-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark), #1a1a2e);
+            color: white;
+        }
+
+        #gameCanvas {
+            background: #2c3e50;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+        }
+
+        .game-instructions {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#welcome-section"><i class="fa-solid fa-house"></i></a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#game">Game</a>
+        <a href="#social-media">Contact</a>
+    </nav>
+
+    <!-- Existing sections remain the same... -->
+
+    <!-- New Game Section -->
+    <section id="game" class="game-section">
+        <h2>Arcade Corner</h2>
+        <canvas id="gameCanvas" width="600" height="400"></canvas>
+        <p class="game-instructions">
+            Use Left/Right Arrow Keys to move<br>
+            Press Spacebar to Jump
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Dyllan Kintner. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let player = {
+            x: 50,
+            y: 300,
+            width: 30,
+            height: 30,
+            speed: 5,
+            gravity: 0.5,
+            jumpPower: 10,
+            velocityY: 0,
+            isJumping: false,
+        };
+
+        let keys = {};
+
+        function update() {
+            // Gravity
+            if (player.isJumping) {
+                player.velocityY += player.gravity;
+                player.y += player.velocityY;
+                // Check if player is on the ground
+                if (player.y >= 300) {
+                    player.y = 300;
+                    player.isJumping = false;
+                    player.velocityY = 0;
+                }
+            }
+
+            // Move left or right
+            if (keys['ArrowRight']) {
+                player.x += player.speed;
+            }
+            if (keys['ArrowLeft']) {
+                player.x -= player.speed;
+            }
+
+            // Prevent player from going out of bounds
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the ground
+            ctx.fillStyle = '#4CAF50';
+            ctx.fillRect(0, 350, canvas.width, 50);
+
+            // Draw the player
+            ctx.fillStyle = 'red';
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+
+            requestAnimationFrame(update);
+        }
+
+        function jump() {
+            if (!player.isJumping) {
+                player.isJumping = true;
+                player.velocityY = -player.jumpPower;
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            if (e.key === ' ') {
+                jump();
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+        // Start the game loop
+        update();
+    </script>
+</body>
+</html>

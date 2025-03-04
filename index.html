@@ -40,6 +40,8 @@
             line-height: 1.6;
         }
 
+        
+
         /* Typography */
         h1, h2, h3 {
             font-weight: 700;
@@ -195,7 +197,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("city.jpg") center/cover no-repeat;
+            background: white;
             filter: brightness(0.3);
             z-index: -1;
         }
@@ -211,18 +213,18 @@
         }
         
         .about-section h2 {
-            color: white;
+            color: var(--primary-dark)
         }
         
         .about-section h2::after {
-            background: var(--accent);
+            background: var(--);
         }
 
         /* Projects Section */
         .projects {
             padding: 6rem 2rem;
             text-align: center;
-            background: #f3f4f6;
+            background: white
         }
 
         .projects-container {
@@ -243,6 +245,20 @@
         }
 
         .project-tile:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .certifications {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .certifications:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
         }
@@ -506,6 +522,7 @@
             box-shadow: 0 0 10px rgba(248, 87, 166, 0.8);
             animation: orbit-planet 12s linear infinite reverse;
         }
+        
 
         @keyframes orbit-planet {
             0% { transform: rotate(0deg) translateX(125px) rotate(0deg); }
@@ -599,7 +616,7 @@
     <section id="projects" class="projects">
         <h2>certifications</h2>
         <div class="projects-container">
-            <div class="project-tile">
+            <div class="certifications">
                 <img src="images/Python.svg.png" alt="Project 1" class="project-pyton">
                 <div class="project-content">
                     <h3 class="project-title">Python</h3>
@@ -609,7 +626,7 @@
                 </div>
             </div>
             
-            <div class="project-tile">
+            <div class="certifications">
                 <img src="images/HTML-CSS-logo.png" alt="Project 2" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">HTML/CSS</h3>
